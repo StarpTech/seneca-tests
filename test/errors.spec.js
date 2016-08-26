@@ -15,7 +15,7 @@ describe('Seneca error handling', function () {
                         if (err) {
                             console.error('Error propagated to A-B call :', err);
                         }
-                        return done(null, {chain: 'A->B->' + reply.chain})
+                        return done(err, {chain: 'A->B->' + reply.chain})
                     });
                 })
             }
@@ -26,7 +26,7 @@ describe('Seneca error handling', function () {
                         if (err) {
                             console.error('Error propagated to B->C call :', err);
                         }
-                        return done(null, {chain: 'C->' + reply.chain})
+                        return done(err, {chain: 'C->' + reply.chain})
                     });
                 })
             }
@@ -63,7 +63,7 @@ describe('Seneca error handling', function () {
                     Assert.ok(err);
                 })
                 .act('cmd:A', function (err, reply) {
-                    Assert.ok(err); //Important: You should be able to evaluate the error for yourself
+                    Assert.ok(err); //Important: should be able to evaluate the error for yourself
                     console.log('error: ', err, 'result: ', reply);
                     done();
                 });
@@ -80,7 +80,7 @@ describe('Seneca error handling', function () {
                         if (err) {
                             console.error('Error propagated to A-B call :', err);
                         }
-                        return done(null, {chain: 'A->B->' + reply.chain})
+                        return done(err, {chain: 'A->B->' + reply.chain})
                     });
                 })
             }
@@ -91,7 +91,7 @@ describe('Seneca error handling', function () {
                         if (err) {
                             console.error('Error propagated to B->C call :', err);
                         }
-                        return done(null, {chain: 'C->' + reply.chain})
+                        return done(err, {chain: 'C->' + reply.chain})
                     });
                 })
             }
@@ -129,7 +129,7 @@ describe('Seneca error handling', function () {
                     Assert.ok(err);
                 })
                 .act('cmd:A', function (err, reply) {
-                    Assert.ok(err); //Important: You should be able to evaluate the error for yourself
+                    Assert.ok(err); //Important: should be able to evaluate the error for yourself
                     console.log('error: ', err, 'result: ', reply);
                     done();
                 });
@@ -146,7 +146,7 @@ describe('Seneca error handling', function () {
                         if (err) {
                             console.error('Error propagated to A-B call :', err);
                         }
-                        return done(null, {chain: 'A->B->' + reply.chain})
+                        return done(err, {chain: 'A->B->' + reply.chain})
                     });
                 })
             }
@@ -155,12 +155,12 @@ describe('Seneca error handling', function () {
                 this.add('cmd:B', (msg, done) => {
                     this.act('cmd:C', function (err, reply) {
 
-                        Assert.ok(err); //Important: You should be able to evaluate the error for yourself
+                        Assert.ok(err); //Important: should be able to evaluate the error for yourself
 
                         if (err) {
                             console.error('Error propagated to B->C call :', err);
                         }
-                        return done(null, {chain: 'C->' + reply.chain})
+                        return done(err, {chain: 'C->' + reply.chain})
                     });
                 })
             }
@@ -213,7 +213,7 @@ describe('Seneca error handling', function () {
                         if (err) {
                             console.error('Error propagated to A-B call :', err);
                         }
-                        return done(null, {chain: 'A->B->' + reply.chain})
+                        return done(err, {chain: 'A->B->' + reply.chain})
                     });
                 })
             }
@@ -225,7 +225,7 @@ describe('Seneca error handling', function () {
                         if (err) {
                             console.error('Error propagated to B->C call :', err);
                         }
-                        return done(null, {chain: 'C->' + reply.chain})
+                        return done(err, {chain: 'C->' + reply.chain})
                     });
                 })
             }
