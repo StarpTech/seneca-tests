@@ -7,6 +7,8 @@ describe('Seneca error handling', function () {
 
     describe('Error handling in a call chain()', function () {
 
+        this.timeout(6000);
+
         it('should propagate passed error to the first callee', function (done) {
 
             function A() {
