@@ -43,8 +43,12 @@ Any contribution is welcome! Thank you. In case of the wrong usage of this frame
 
 # Result:
 1) As long as we communicate in the same server and don't call further acts the error is propagated correctly.
+
 2) As soon as we use acts in acts the original error isn't propagated correctly (the error is from type timeout).
-3) As soon as we seperate our seneca plugins to different servers the error isn't propagated to the callee (err is NULL) and the original error (error handler of seneca) is wrong.
+
+3) As soon as we seperate our seneca plugins to different servers the error isn't propagated to the callee (err is NULL) and the
+original error (error handler of seneca) is wrong.
+
 
 __How can I handle my business errors when I can't handle them in the corresponding handler?__
 
