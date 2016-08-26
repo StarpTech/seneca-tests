@@ -1,0 +1,17 @@
+{
+  "name": "seneca-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Dustin Deus <deusdustin@gmail.de> (http://www.starptech.de)",
+  "license": "ISC",
+  "dependencies": {
+    "seneca": "^2.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.2"
+  }
+}
