@@ -27,7 +27,10 @@ Any contribution is welcome! Thank you. In case of the wrong usage of this frame
 
 Question to answering:
 
-- What is the way to handle with errors which happens in a different place/service. How can I react on these errors? 
+- What is the way to handle with errors across services doesn't matter where they lives?. In the tests you can see that it behavious very different.
+
+Results:
+
 
 ### Author
 Dustin Deus <deusdustin@gmail.de>
