@@ -7,8 +7,6 @@ describe('Seneca error handling', function () {
 
     describe('Error handling in a call chain()', function () {
 
-        this.timeout(6000);
-
         it('should propagate passed error to the first callee', function (done) {
 
             function A() {
@@ -39,7 +37,7 @@ describe('Seneca error handling', function () {
                 })
             }
 
-            let server = Seneca({
+            Seneca({
                 debug: {
                     undead: true
                 },
@@ -49,7 +47,7 @@ describe('Seneca error handling', function () {
                 .use(B)
                 .use(C)
                 .error((err) => {
-                    console.error(err);
+                    Assert.ok(err);
                 })
                 .listen({type: 'http', port: '8260', pin: 'cmd:*'});
 
@@ -62,12 +60,11 @@ describe('Seneca error handling', function () {
             })
                 .client({port: 8260, pin: 'cmd:*'})
                 .error((err) => {
-                    console.error(err);
+                    Assert.ok(err);
                 })
                 .act('cmd:A', function (err, reply) {
                     Assert.ok(err); //Important: You should be able to evaluate the error for yourself
                     console.log('error: ', err, 'result: ', reply);
-                    server.close();
                     done();
                 });
 
@@ -116,7 +113,7 @@ describe('Seneca error handling', function () {
                 .use(B)
                 .use(C)
                 .error((err) => {
-                    console.error(err);
+                    Assert.ok(err);
                 })
                 .listen({type: 'http', port: '8261', pin: 'cmd:*'});
 
@@ -129,10 +126,10 @@ describe('Seneca error handling', function () {
             })
                 .client({port: 8261, pin: 'cmd:*'})
                 .error((err) => {
-                    console.error(err);
+                    Assert.ok(err);
                 })
                 .act('cmd:A', function (err, reply) {
-                    Assert.ok(err) //Important: You should be able to evaluate the error for yourself
+                    Assert.ok(err); //Important: You should be able to evaluate the error for yourself
                     console.log('error: ', err, 'result: ', reply);
                     done();
                 });
@@ -184,7 +181,7 @@ describe('Seneca error handling', function () {
                 .use(B)
                 .use(C)
                 .error((err) => {
-                    console.error(err);
+                    Assert.ok(err);
                 })
                 .listen({type: 'http', port: '8262', pin: 'cmd:*'});
 
@@ -197,7 +194,7 @@ describe('Seneca error handling', function () {
             })
                 .client({port: 8262, pin: 'cmd:*'})
                 .error((err) => {
-                    console.error(err);
+                    Assert.ok(err);
                 })
                 .act('cmd:A', function (err, reply) {
                     console.log('error: ', err, 'result: ', reply);
@@ -249,7 +246,7 @@ describe('Seneca error handling', function () {
                 .use(B)
                 .use(C)
                 .error((err) => {
-                    console.error(err);
+                    Assert.ok(!err);
                 })
                 .listen({type: 'http', port: '8263', pin: 'cmd:*'});
 
@@ -262,7 +259,7 @@ describe('Seneca error handling', function () {
             })
                 .client({port: 8263, pin: 'cmd:*'})
                 .error((err) => {
-                    console.error(err);
+                    Assert.ok(!err);
                 })
                 .act('cmd:A', function (err, reply) {
                     Assert.ok(!err); //Err is ignored everywhere
