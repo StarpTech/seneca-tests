@@ -25,5 +25,9 @@ In Seneca you can build easily a network of Microservices. Seneca built this too
 To ensure this feature senecajs needs to be able to handle distribution problems. I open this repository fo focus on error handling in a microservice environment.
 Any contribution is welcome! Thank you. In case of the wrong usage of this framework it would be nice to show me the correct way. Another reason why I open this is that senecajs lacks on documentation.
 
+Question to answering:
+
+- What is the way to handle with errors which happens in a different place/service. How can I react on these errors? 
+
 ### Author
 Dustin Deus <deusdustin@gmail.de>

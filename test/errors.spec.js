@@ -5,6 +5,83 @@ const Assert = require('assert');
 
 describe('Seneca error handling', function () {
 
+    describe('Default Error handling', function () {
+
+        it('should propagate error to callee "Error first callbacks" on the same host', function (done) {
+
+            function A() {
+                this.add('cmd:A', (msg, done) => {
+                    return done(new Error('test'), { chain: 'A' });
+                })
+            }
+
+           let si = Seneca({
+                debug: {
+                    undead: true
+                },
+                log: 'silent'
+            })
+                .use(A)
+                .error((err) => {
+                    Assert.ok(err);
+                })
+                .listen({type: 'http', port: '8260', pin: 'cmd:*'});
+
+            si.act('cmd:A', function (err, reply) {
+                Assert.ok(err);
+                console.log('error: ', err, 'result: ', reply);
+                done();
+            });
+
+
+        });
+
+        it('should propagate error "Error first callbacks"', function (done) {
+
+            function A() {
+                this.add('cmd:A', (msg, done) => {
+                    return done(new Error('test'), { chain: 'A' });
+                })
+            }
+
+            Seneca({
+                debug: {
+                    undead: true
+                },
+                log: 'silent'
+            })
+                .use(A)
+                .error((err) => {
+                    Assert.ok(err);
+                })
+                .listen({type: 'http', port: '8260', pin: 'cmd:*'});
+
+
+            Seneca({
+                debug: {
+                    undead: true
+                },
+                log: 'silent'
+            })
+                .client({port: 8260, pin: 'cmd:*'})
+                .error((err) => {
+                    Assert.ok(err);
+                })
+                .act('cmd:A', function (err, reply) {
+
+                    //Here: reply contains the result { chain: 'A' } although an error was passed.
+                    //console.log(reply);
+
+                    Assert.ok(err); //Important: should be able to evaluate the error for yourself
+                    console.log('error: ', err, 'result: ', reply);
+                    done();
+                });
+
+
+        });
+
+    });
+
     describe('Error handling in a call chain()', function () {
 
         it('should propagate passed error to the first callee', function (done) {
