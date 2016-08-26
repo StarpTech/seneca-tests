@@ -31,6 +31,7 @@ Any contribution is welcome! Thank you. In case of the wrong usage of this frame
 
 #Tests:
 
+##Error handling
 ```js
 √ should propagate error to callee "Error first callbacks" on the same host (315ms)
 1) should propagate error "Error first callbacks"
@@ -41,7 +42,7 @@ Any contribution is welcome! Thank you. In case of the wrong usage of this frame
 √ should passed error with custom error handling (549ms)
 ```
 
-# Result:
+## Result:
 1) As long as we communicate in the same server and don't call further acts the error is propagated correctly.
 
 2) As soon as we use acts in acts the original error isn't propagated correctly (the error is from type timeout).
