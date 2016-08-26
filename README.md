@@ -29,16 +29,25 @@ Any contribution is welcome! Thank you. In case of the wrong usage of this frame
 
 - What is the way to handle with errors across services when it doesn't matter where they lives? In the tests you can see that it behavious very differently.
 
-Tests:
+#Tests:
 
 ```js
- √ should propagate error to callee "Error first callbacks" on the same host (315ms)
+√ should propagate error to callee "Error first callbacks" on the same host (315ms)
 1) should propagate error "Error first callbacks"
-2) should propagate passed error to the first callee
-3) should propagate timeout errors to the first callee
-4) should propagate passed error to the previous callee
+2) should propagate passed error to the first callee on the same host
+3) should propagate passed error to the first callee
+4) should propagate timeout errors to the first callee
+5) should propagate passed error to the previous callee
 √ should passed error with custom error handling (549ms)
 ```
+
+# Result:
+1) As long as we communicate in the same server and don't call further acts the error is propagated correctly.
+2) As soon as we use acts in acts the original error isn't propagated correctly (the error is from type timeout).
+3) As soon as we seperate our seneca plugins to different servers the error isn't propagated to the callee (err is NULL) and the original error (error handler of seneca) is wrong.
+
+__How can I handle my business errors when I can't handle them in the corresponding handler?__
+
 
 
 ### Author
