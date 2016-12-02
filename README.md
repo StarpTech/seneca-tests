@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/StarpTech/seneca-tests.svg?branch=master)](https://travis-ci.org/StarpTech/seneca-tests)
 
-**After few months without a response of the Seneca Core Team I create my own solution https://github.com/hemerajs/hemera#**
+#**After few months without a response from the Seneca Core Team I create my own solution https://github.com/hemerajs/hemera#**
 
 seneca-tests
 [Senecajs](https://github.com/senecajs/seneca) is a microservice toolkit to build distributed systems. In order to guarantee that your most important part of your application works as you expect I write some edges cases to prove senecajs in practice. Thanks to the guys who create senecajs.
