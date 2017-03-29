@@ -51,8 +51,3 @@ original error (error handler of seneca) is wrong.
 
 
 __How can I handle my business errors when I can't handle them in the corresponding handler?__
-
-
-
-### Author
-Dustin Deus <deusdustin@gmail.de>
