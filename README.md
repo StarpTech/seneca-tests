@@ -28,9 +28,9 @@ Any contribution is welcome! Thank you. In case of the wrong usage of this frame
 
 - What is the way to handle with errors across services when it doesn't matter where they lives? In the tests you can see that it behavious very differently.
 
-#Tests:
+# Tests:
 
-##Error handling
+## Error handling
 ```js
 √ should propagate error to callee "Error first callbacks" on the same host (315ms)
 1) should propagate error "Error first callbacks"
